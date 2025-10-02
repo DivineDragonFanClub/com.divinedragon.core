@@ -66,7 +66,7 @@ namespace Dragonstone
                     string json = File.ReadAllText(settingsPath);
                     AddressableSettingsRoot settings = JsonUtility.FromJson<AddressableSettingsRoot>(json);
                 
-                    GameRuntimePath = Path.GetDirectoryName(settingsPath);
+                    GameRuntimePath = Path.GetDirectoryName(settingsPath).Replace("\\", "/");
                     GameCatalogLocation = settings.m_CatalogLocations.First().m_InternalId.Replace("{UnityEngine.AddressableAssets.Addressables.RuntimePath}", GameRuntimePath);
                     GameBuildTarget = settings.m_buildTarget;
 
